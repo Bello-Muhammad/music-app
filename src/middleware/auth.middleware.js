@@ -36,7 +36,7 @@ const isAuth = async (req, res, next) => {
 
 const authPage = (permissions) => {
     return (req, next) => {
-        const role = req.session.user.role;
+        const role = req.user.role;
         if(permissions.includes(role)) {
             next();
         }else{

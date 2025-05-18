@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const { JWT_SECRET } = require('../config/envConfig');
+const { JWT_SECRET, JWT_LIFE } = require('../config/envConfig');
 
 class HelperUtils {
 
@@ -13,7 +13,7 @@ class HelperUtils {
     }
 
     static async generateToken (_id) {
-        return await jwt.sign({ _id }, JWT_SECRET);
+        return await jwt.sign({ _id }, JWT_SECRET, { expiresIn: JWT_LIFE });
     }
 }
 
